@@ -1,45 +1,64 @@
 package com.bridgelabz;
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 
 public class AddressBook {
-    private class Contact {
-        String firstName, lastNmae, address, city, state, emailId;
-        int zipCode;
-        long mobileNumber;
+    static ContactDetails person = new ContactDetails();
+    /**
+     * Creating a List of ContactDetails of type String using ArrayList here Adding
+     * new elements in the List
+     */
+    static List<ContactDetails> contactDetailsList = new ArrayList<ContactDetails>();
+
+    /**
+     * created method addNewContact() to create a new contacts to the AddressBook
+     */
+    public static void addNewContact() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter First Name : ");
+        String firstName = scanner.next();
+        System.out.println("Enter Last Name : ");
+        String lastName = scanner.next();
+        System.out.println("Enter Your Address : ");
+        String address = scanner.next();
+        System.out.println("Enter Your City : ");
+        String city = scanner.next();
+        System.out.println("Enter Your State");
+        String state = scanner.next();
+        System.out.println("Enter ZipCode : ");
+        int zipCode = scanner.nextInt();
+        System.out.println("Enter MobileNumber : ");
+        long mobileNumber = scanner.nextLong();
+        System.out.println("Enter your EmailId  : ");
+        String emailId = scanner.next();
+        scanner.close();
+
+        person = new ContactDetails(firstName, lastName, address, city, state, zipCode, mobileNumber, emailId);
+        contactDetailsList.add(person);
+        printContact();
+
     }
 
     /**
-     * created method printContact for creating contacts in AddressBook
+     * created method printContact() to display the data
      */
-    public void printContact() {
-        Contact person = new Contact();
-        person.firstName = "Dinesh";
-        person.lastNmae = "Nangare";
-        person.address = "Satara";
-        person.city = "Satara";
-        person.state = "Maharastra";
-        person.zipCode = 56699;
-        person.mobileNumber = 891981981;
-        person.emailId = "abc123@gmail.com";
-        System.out.println("Contact Details");
-        System.out.println("Name          : " + person.firstName + " " + person.lastNmae + "\n" + "Address       : "
-                + person.address + "\n" + "City          : " + person.city + "\n" + "State         : " + person.state
-                + "\n" + "ZipCode       : " + person.zipCode + "\n" + "MobileNumber  : " + person.mobileNumber + "\n"
-                + "EmailId       : " + person.emailId + "\n");
+    public static void printContact() {
+        for (int i = 0; i < contactDetailsList.size(); i++) {
+            person = contactDetailsList.get(i);
+            System.out.println("Contact Details");
+            System.out.println("Name          : " + person.getFirstName() + " " + person.getLastName() + "\n"
+                    + "Address       : " + person.getAddress() + "\n" + "City          : " + person.getCity() + "\n"
+                    + "State         : " + person.getState() + "\n" + "ZipCode       : " + person.getZipCode() + "\n"
+                    + "MobileNumber  : " + person.getMobileNumber() + "\n" + "EmailId       : " + person.getEmailId()
+                    + "\n");
+        }
     }
 
     public static void main(String[] args) {
         /**
-         * created instance of AddressBook class
+         * calling method addNewContact()
          */
-        AddressBook addressBook = new AddressBook();
-        /**
-         * Calling method printContact for displaying contacts
-         */
-        addressBook.printContact();
-
+        addNewContact();
     }
 }
-
