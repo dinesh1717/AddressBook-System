@@ -45,7 +45,7 @@ public class AddressBookMain {
 
     /**
      * Main method for manipulation AddressBookCollection
-     *
+
      */
     public static void main(String[] args) {
         AddressBookMain addressBookMain = new AddressBookMain();
